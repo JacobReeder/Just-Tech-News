@@ -64,7 +64,6 @@ const router = require('express').Router();
 
             res.json({ user: dbUserData, message: 'You are now logged in!' });
 
-           res.json({ user: dbUserData});
 
         });
 
@@ -107,7 +106,7 @@ const router = require('express').Router();
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
-        })
+        });
     });
 
     module.exports = router;
