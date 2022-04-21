@@ -17,8 +17,15 @@ const router = require('express').Router();
                 attributes: { exclude: ['password'] },
                 where: {
                   id: req.params.id
-                }
+                },
+                include: [
+                  {
+                    model: Post,
+                    attributes: ['id', 'title', 'post_url', 'created_at']
+                  }
+                ]
               })
+              
                 .then(dbUserData => {
                   if (!dbUserData) {
                     res.status(404).json({ message: 'No user found with this id' });
@@ -52,7 +59,7 @@ const router = require('express').Router();
             }
         }).then(dbUserData => {
             if (!dbUserData) {
-                res.status(400).json({ message: 'No user with that email address!'});
+                res.status(400).json({ message: 'No user with that email address!' });
                 return;
             }
 
