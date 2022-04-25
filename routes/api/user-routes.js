@@ -24,6 +24,18 @@ const { User, Post, Vote } = require('../../models');
                     model: Post,
                     attributes: ['id', 'title', 'post_url', 'created_at']
                   },
+<<<<<<< HEAD
+=======
+                  // include the Comment model here:
+                  {
+                    model: Comment,
+                    attributes: ['id', 'comment_text', 'created_at'],
+                    include: {
+                      model: Post,
+                      attributes: ['title']
+                    }
+                  },
+>>>>>>> develop
                   {
                     model: Post,
                     attributes: ['title'],
