@@ -24,8 +24,6 @@ const { User, Post, Vote } = require('../../models');
                     model: Post,
                     attributes: ['id', 'title', 'post_url', 'created_at']
                   },
-<<<<<<< HEAD
-=======
                   // include the Comment model here:
                   {
                     model: Comment,
@@ -35,7 +33,6 @@ const { User, Post, Vote } = require('../../models');
                       attributes: ['title']
                     }
                   },
->>>>>>> develop
                   {
                     model: Post,
                     attributes: ['title'],
