@@ -1,5 +1,5 @@
 const router = require('express').Router();
-    const { User } = require('../../models');
+    const { User, Post, Comment, Vote } = require('../../models');
 
     router.get('/:id', (req, res) => {
         User.findAll({
@@ -61,7 +61,9 @@ const router = require('express').Router();
             email: req.body.email,
             password: req.body.password
         })
-        .then(dbUserData => res.json(dbUserData))
+        .then(dbUserData => {
+        res.json(dbUserData);
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
