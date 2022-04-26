@@ -1,9 +1,5 @@
 const router = require('express').Router();
-<<<<<<< HEAD:routes/api/user-routes.js
-const { User, Post, Vote } = require('../../models');
-=======
     const { User, Post, Comment, Vote } = require('../../models');
->>>>>>> develop:controllers/api/user-routes.js
 
 
     router.get('/', (req, res) => {
