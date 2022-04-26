@@ -1,5 +1,9 @@
 const router = require('express').Router();
+<<<<<<< HEAD:routes/api/user-routes.js
 const { User, Post, Vote } = require('../../models');
+=======
+    const { User, Post, Comment, Vote } = require('../../models');
+>>>>>>> develop:controllers/api/user-routes.js
 
 
     router.get('/', (req, res) => {
@@ -62,7 +66,9 @@ const { User, Post, Vote } = require('../../models');
             email: req.body.email,
             password: req.body.password
         })
-        .then(dbUserData => res.json(dbUserData))
+        .then(dbUserData => {
+        res.json(dbUserData);
+        })
         .catch(err => {
             console.log(err);
             res.status(500).json(err);
