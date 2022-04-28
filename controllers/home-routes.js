@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const res = require('express/lib/response');
 const sequelize = require('..//config/connection');
 const { Post, User, Comment, Vote } = require('../models');
 
@@ -29,7 +28,7 @@ router.get('/', (req, res) => {
  ]
  })
   .then(dbPostData => {
-    const posts = dbPostData.map(post => post.get({ plain: true}));
+    const posts = dbPostData.map(post => post.get({ plain: true }));
   res.render('homepage', { 
     posts,
   loggedIn: req.session.loggedIn
@@ -41,13 +40,6 @@ router.get('/', (req, res) => {
   });
   });
     
-  router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
-    }
-    res.render('login');
-  });
 
   router.get('/post/:id', (req, res) => {
     Post.findOne = ({
@@ -64,7 +56,7 @@ router.get('/', (req, res) => {
       include: [
       {
         model: Comment,
-        attributes: ['id', 'comment', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attribtues: ['username']
@@ -83,7 +75,7 @@ router.get('/', (req, res) => {
      }
 
      //serialize the data
-     const post = dbPostData.get({ plain:true });
+     const post = dbPostData.get({ plain: true });
   
     res.render('single-post', { 
       post,
@@ -96,5 +88,12 @@ router.get('/', (req, res) => {
   });
 });
 
+router.get('/login', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+});
 
 module.exports = router;

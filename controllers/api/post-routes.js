@@ -89,6 +89,7 @@ router.get('/:id', (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
+    
   });
   router.put('/upvote', (req, res) => {
     // custom static method created in models/Post.js
